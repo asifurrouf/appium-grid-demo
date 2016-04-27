@@ -1,16 +1,16 @@
 package io.appium.test.workshop;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
-public class AndroidHybridTest extends SauceTestClass {
+public class AndroidHybridTest extends AppiumTestClass {
 
-    @Before
-    public void setUp() throws Exception {
+    @BeforeTest
+    public void setUp(String node) throws Exception {
         capabilities.setCapability("deviceName", "Android Emulator");
         capabilities.setCapability("platformVersion", "4.4");
         capabilities.setCapability("app", getApp("HelloGappium-android.apk"));
-        super.setUpAndroidDriver();
+        super.setUpAndroidDriver(node);
     }
 
     @Test

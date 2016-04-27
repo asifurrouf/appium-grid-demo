@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite1"  parallel="tests" thread-count="2" >
+    <test name="s3">
+        <parameter name="deviceName" value="192.168.99.104:5555"/>
+        <parameter name="node" value="http://10.29.5.18:4823/wd/hub"/>
+        <classes>
+            <class name="io.appium.test.workshop.AndroidNativeTest"/>
+        </classes>
+    </test>
+    <test name="s4">
+        <parameter name="deviceName" value="192.168.99.103:5555"/>
+        <parameter name="node" value="http://10.29.5.18:4923/wd/hub"/>
+        <classes>
+            <class name="io.appium.test.workshop.AndroidNativeTest"/>
+        </classes>
+    </test>
+</suite>
