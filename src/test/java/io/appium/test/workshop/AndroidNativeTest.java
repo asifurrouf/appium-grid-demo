@@ -16,8 +16,6 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 public class AndroidNativeTest extends AppiumTestClass {
-
-
     @Test
     public void basicAndroidNativeTest() throws Exception {
         driver.findElement(MobileBy.AccessibilityId("Add Contact")).click();

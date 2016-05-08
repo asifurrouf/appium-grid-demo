@@ -21,14 +21,16 @@ import java.util.concurrent.TimeUnit;
 public abstract class AppiumTestClass {
     protected AppiumDriver driver;
     protected DesiredCapabilities capabilities = new DesiredCapabilities();
+    protected String appiumServer = "http://localhost:4723/wd/hub";
+
     @BeforeTest
-    @Parameters({"deviceName","node"})
-    public void setUp(String deviceName,String node) throws Exception {
+    @Parameters({"deviceName"})
+    public void setUp(String deviceName) throws Exception {
         capabilities.setCapability("deviceName",deviceName);
         capabilities.setCapability("platformVersion", "5.0");
         capabilities.setCapability("app", getApp("ContactManager.apk"));
 
-        setUpAndroidDriver(node);
+        setUpAndroidDriver();
     }
 
     protected String getApp(String appFile) {
@@ -46,7 +48,7 @@ public abstract class AppiumTestClass {
         return defaultVersion;
     }
 
-    protected IOSDriver setUpIosDriver(String appiumServer) throws Exception {
+    protected IOSDriver setUpIosDriver() throws Exception {
         preDriverInit();
         capabilities.setCapability("platformName", "iOS");
         driver = new IOSDriver(new URL(appiumServer), capabilities);
@@ -54,14 +56,14 @@ public abstract class AppiumTestClass {
         return (IOSDriver) driver;
     }
 
-    protected AndroidDriver setUpAndroidDriver(String appiumServer ) throws Exception {
+    protected AndroidDriver setUpAndroidDriver( ) throws Exception {
         preDriverInit();
         capabilities.setCapability("platformName", "Android");
         driver = new AndroidDriver(new URL(appiumServer), capabilities);
         postDriverInit();
 
         System.out.println("------------------------------------");
-        System.out.println(appiumServer + ":start!");
+        System.out.println(    appiumServer + ":start!");
         return (AndroidDriver) driver;
     }
 
